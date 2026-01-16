@@ -47,4 +47,51 @@ fun main() {
         println()
     }
 
+    println()
+    println("****************************")
+    println()
+
+    // Ejercicio 4.4 Coche
+    //Coche con marca y modelo nulos
+    try {
+        val coche1 = Coche(null, null, 76, 4, "1232ert", "Blanco")
+        println(coche1)
+    }catch (e: Exception){
+        println(e.message)
+    }
+    //Coche con numero de caballos inferior a 70
+    try {
+        val coche2 = Coche("Kia", "Sportage", 40, 4, "1232ert", "Negro")
+        println(coche2)
+    }catch (e: Exception){
+        println(e.message)
+    }
+    //Coche con número de puertas con valor inferior o superior
+    try {
+        val coche3 = Coche("Ford", "Focus", 300, 2, "1232ert", "Gris")
+        println(coche3)
+    }catch (e: Exception){
+        println(e.message)
+    }
+    //Coche con matricula con valor no compatible
+    try {
+        val coche4 = Coche("Kia", "Sportage",500,4,"122","Azul")
+        println(coche4)
+    }catch (e: Exception){
+        println(e.message)
+    }
+    //Color nulo
+    try {
+        val coche5 = Coche("Kia", "Sportage",500,4,"1232ert", null)
+        println(coche5)
+    }catch (e: Exception){
+        println(e.message)
+    }
+
+    println()
+    println("****************************")
+    println()
+
+    //Ejercicio 4.5 Tiempo
+
 }
