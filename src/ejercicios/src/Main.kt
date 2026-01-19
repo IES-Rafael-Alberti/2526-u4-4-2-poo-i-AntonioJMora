@@ -93,5 +93,106 @@ fun main() {
     println()
 
     //Ejercicio 4.5 Tiempo
+    println("Introduce la hora actual (23:59:59): ")
+    val horaActual = readln()
+    val parteHora = horaActual.split(":")
+    var h : Int = 0
+    var m : Int = 0
+    var s : Int = 0
+    try {
+        h = parteHora[0].toInt()
+    }catch (e: Exception){
+        h = 0
+    }
+    try {
+        m = parteHora[1].toInt()
+    }catch (e: Exception){
+        m = 0
+    }
+    try {
+        s = parteHora[2].toInt()
+    }catch (e: Exception){
+        s = 0
+    }
 
+    val tiempo = Tiempo(h, m, s)
+    println(tiempo.toString())
+
+    println("Introduce el tiempo a añadir:")
+    val horaAñadir = readln()
+    val parteAñadida = horaAñadir.split(":")
+    var hAñadida : Int = 0
+    var mAñadida : Int = 0
+    var sAñadida : Int = 0
+    try {
+        hAñadida = parteAñadida[0].toInt()
+    }catch (e: Exception){
+        hAñadida = 0
+    }
+    try {
+        mAñadida = parteAñadida[1].toInt()
+    }catch (e: Exception){
+        mAñadida = 0
+    }
+    try {
+        sAñadida = parteAñadida[2].toInt()
+    }catch (e: Exception){
+        sAñadida = 0
+    }
+
+    val tiempoAñadido = Tiempo(hAñadida,mAñadida,sAñadida)
+
+    if(tiempo.incrementar(tiempoAñadido)){
+        println("Tiempo despues de incrementar : $tiempo")
+    }else{
+        println("No se puede incrementar, pasa de 23:59:59")
+    }
+
+    if(tiempo.decrementar(tiempoAñadido)){
+        println("Tiempo despues de decrementar : $tiempo")
+    }else{
+        println("No se puede incrementar, baja de 00:00:00")
+    }
+
+    val comparar = tiempo.comparar(tiempoAñadido)
+    val comparacion = when (comparar) {
+        -1 -> "menor que"
+        0 -> "igual a"
+        1 -> "mayor que"
+        else -> ""
+    }
+
+    println("El tiempo inicial es $comparacion el tiempo añadido")
+
+    val copia = tiempo.copiar()
+    println("Copia del tiempo inicial: $copia")
+
+    tiempo.copiar(tiempoAñadido)
+    println("Tiempo después de copiar t: $tiempo")
+
+    val suma = tiempo.sumar(tiempoAñadido)
+    if (suma != null) {
+        println("Resultado de la suma: $suma")
+    } else {
+        println("Error: la suma supera 23:59:59")
+    }
+
+    val resta = tiempo.restar(tiempoAñadido)
+    if (resta != null) {
+        println("Resultado de la resta: $resta")
+    } else {
+        println("Error: la resta baja de 00:00:00")
+    }
+
+    if (tiempo.esMayorQue(tiempoAñadido)) {
+        println("El tiempo inicial es mayor que el tiempo añadido")
+    } else {
+        println("El tiempo inicial NO es mayor que el tiempo añadido")
+    }
+
+    if (tiempo.esMenorQue(tiempoAñadido)) {
+        println("El tiempo inicial es menor que el tiempo añadido")
+    } else {
+        println("El tiempo inicial NO es menor que el tiempo añadido")
+    }
 }
